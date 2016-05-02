@@ -56,11 +56,11 @@
 \NewEnviron{myremark}[1]
   {\par\medskip\noindent
   \begin{tikzpicture}
-    \node[inner sep=0pt] (box) {\parbox[t]{.99\textwidth}{%
-      \begin{minipage}{.3\textwidth}
-      \centering\tikz[scale=5]\node[scale=3,rotate=30]{\bclampe};
+    \node[inner sep=0pt] (box) {\parbox[t]{\textwidth}{%
+      \begin{minipage}{0.1\textwidth}
+      \centering\tikz[scale=1]\node[scale=1,rotate=30]{};
       \end{minipage}%
-      \begin{minipage}{.65\textwidth}
+      \begin{minipage}{.99\textwidth}
       \textbf{#1}\par\smallskip
       \BODY
       \end{minipage}\hfill}%
@@ -187,15 +187,7 @@ With OS multiple process can be run simultaneously. Thus performance of the prod
 \end{description}
 
 
-\fbox{\begin{minipage}{15em}
-\textit{\textbf{ps -e}}\index{ps command} Command to display the processes which are currently running
-\end{minipage}}
-
-\begin{bclogo}[couleur = blue!30, arrondi = 0.1, logo = \bccrayon, ombre = true]{title}
-\textit{\textbf{ps -e}}\index{ps command} Command to display the processes which are currently running
-\end{bclogo}
-
-\begin{myremark}{title}
+\begin{myremark}{\textbf{Commands}}
 \textit{\textbf{ps -e}}\index{ps command} Command to display the processes which are currently running
 \end{myremark}
 
