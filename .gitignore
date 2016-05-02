@@ -1,0 +1,13 @@
+/Linux.out.ps
+/Linux.toc
+/Linux.blg
+/Linux.ptc
+/Linux.run.xml
+/Linux.ilg
+/Linux.dvi
+/Linux.bcf
+*.aux
+*.swp
+test
+*.synctex.*
+*.log
