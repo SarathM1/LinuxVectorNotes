@@ -1,0 +1,3 @@
+Hello
+a.out getpid.c system.c system.txt
+Hi
