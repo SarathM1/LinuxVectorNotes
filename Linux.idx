@@ -1,7 +1,8 @@
 \indexentry{Process Management|hyperpage}{9}
 \indexentry{ps command|hyperpage}{9}
 \indexentry{ps command|hyperpage}{9}
-\indexentry{Definitions|hyperpage}{10}
+\indexentry{getpid()|hyperpage}{10}
+\indexentry{getppid()|hyperpage}{10}
 \indexentry{Notations|hyperpage}{10}
 \indexentry{Remarks|hyperpage}{10}
 \indexentry{Corollaries|hyperpage}{10}

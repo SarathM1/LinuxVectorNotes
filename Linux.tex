@@ -163,14 +163,14 @@ With OS multiple process can be run simultaneously. Thus performance of the prod
 \end{description}
 
 
-\begin{myremark}{\textbf{Commands}}
+\begin{myremark}{}
 \textit{\textbf{ps -e}}\index{ps command} Command to display the processes which are currently running
 \end{myremark}
 
 \section{Process Manager}
 For every process, the process manager will provide a process ID, ie; the process manager identifies each process with a process ID.
 
-\fbox{\begin{minipage}{15em}
+\begin{myremark}{}
 \begin{itemize}
 	\item \textit{\textbf{./a.out \& :}}\index{ps command} If we want to run a command in background
 	
@@ -181,7 +181,7 @@ For every process, the process manager will provide a process ID, ie; the proces
 	\item \textit{\textbf{ps -e | grep pts/0: }} If we want to list all programs running in terminal \textit{pts/0}
 
 \end{itemize}
-\end{minipage}}
+\end{myremark}
 
 \begin{figure}[h]
 \centering\includegraphics[scale=0.5]{background}
@@ -192,21 +192,19 @@ For every process, the process manager will provide a process ID, ie; the proces
 	\item[Shell] - Command Interpreter. When user wants to interact with the OS we use the shell. \textbf{ex: bash}
 \end{description}
 
-\fbox{
-\begin{minipage}{15em}
+
+\begin{myremark}{}
 \textbf{\textit{kill: }} - command used to send signals to a particular process
 
 \textbf{ex: kill -9 1769}, where 1769 is process id
 
-\end{minipage}
+\end{myremark}
 
-}
 
 %------------------------------------------------
 
-\section{Definitions}\index{Definitions}
+\section{PID and PPID}\index{getpid()}\index{getppid()}
 
-This is an example of a definition. A definition could be mathematical or it could define a concept.
 
 \begin{definition}[Definition name]
 Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
