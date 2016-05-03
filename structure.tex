@@ -552,3 +552,10 @@ showstringspaces=false}
   {
 	\lstinputlisting[caption=#1, escapechar=, language=C, showstringspaces=false]{#1}
   }
+  
+\NewEnviron{myoutput}[1]
+  {
+	\addtocounter{lstlisting}{-1}
+	\lstinputlisting[numbers=none, nolol, caption=Ouput, escapechar=, showstringspaces=false]{#1}
+  }
+  
