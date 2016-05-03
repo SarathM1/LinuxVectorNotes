@@ -70,6 +70,10 @@
 \endgroup
 
 
+%----------------------------------------------------------------------------------------
+%	TABLE OF LISTINGS
+%----------------------------------------------------------------------------------------
+\lstlistoflistings 
 
 %----------------------------------------------------------------------------------------
 %	TABLE OF CONTENTS
@@ -91,7 +95,7 @@
 %	PART
 %----------------------------------------------------------------------------------------
 
-\part{Part One}
+% % \part{Part One}
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER 1
@@ -207,18 +211,24 @@ For every process, the process manager will provide a process ID, ie; the proces
 
 \begin{mycode}{programs/getpid.c}
 \end{mycode}
+
+\begin{myremark}{}
+\begin{itemize}
+	\item \textbf{get\_pid()}: returns the process id
+	\item \textbf{get\_ppid()}: return the parent process id 
+\end{itemize}
+\end{myremark}
+
+The parent is nothing but the bash. Whenever a new terminal is opened, a bash process is creatted. This bash is the parent of the program being executed
 %------------------------------------------------
 
-\section{Notations}\index{Notations}
+\section{System() function}\index{system()}
 
-\begin{notation}
-Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
-\begin{enumerate}
-\item Bounded support $G$;
-\item Infinitely differentiable;
-\end{enumerate}
-a vector space is denoted by $\mathcal{D}(G)$. 
-\end{notation}
+\begin{mycode}{programs/system.c}
+\end{mycode}
+
+\begin{myoutput}{programs/system.txt}
+\end{myoutput}
 
 %------------------------------------------------
 
@@ -317,7 +327,7 @@ Definition of word.
 %	PART
 %----------------------------------------------------------------------------------------
 
-\part{Part Two}
+% \part{Part Two}
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER 3
