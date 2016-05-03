@@ -517,3 +517,38 @@ addtohook={%
       ( $ (box.north west) + (5pt,3pt) $ ) -- ( $ (box.north west) + (0,3pt) $ ) -- ( $ (box.south west) + (0,-3pt) $ ) -- + (5pt,0);
   \end{tikzpicture}\par\medskip%
 }
+
+%----------------------------------------------------------------------------------------
+%	CODE HIGHLIGHTING IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+
+\usepackage{listings}
+
+\definecolor{strings_red}{rgb}{0.6,0,0} % for strings
+\definecolor{comments_green}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{keywords_purple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{docs_blue}{rgb}{0.25,0.35,0.75} % javadoc
+ 
+\lstset{language=C,
+basicstyle=\ttfamily,
+keywordstyle=\color{keywords_purple}\bfseries,
+stringstyle=\color{strings_red},
+commentstyle=\color{comments_green},
+morecomment=[s][\color{docs_blue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+frame=single,
+stepnumber=2,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+breaklines=true,
+showstringspaces=false}
+
+
+%%LISTINGS DEFENITION ENDS
+
+\NewEnviron{mycode}[1]
+  {
+	\lstinputlisting[caption=#1, escapechar=, language=C, showstringspaces=false]{#1}
+  }
