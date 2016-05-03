@@ -12,3 +12,4 @@
 test
 *.synctex.*
 *.log
+/programs/*.out
