@@ -1,0 +1,7 @@
+Hello
+In parent PID = 7462, PPID = 3897
+In child3, PID = 7465, PPID = 7462
+In child2, PID = 7464, PPID = 7462
+In Child 1, pid = 7463, ppid = 7462
+^C
+

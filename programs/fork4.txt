@@ -1,0 +1,7 @@
+Hello
+In parent, PID = 7299, PPID = 3897
+Common code, pid = 7299, ppid = 3897
+In child, PID = 7300, PPID = 7299
+Common code, pid = 7300, ppid = 7299
+^C
+
