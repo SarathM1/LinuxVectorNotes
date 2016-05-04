@@ -151,10 +151,8 @@ With OS multiple process can be run simultaneously. Thus performance of the prod
  \item[Kernel] All the services combined is called a kernel
 \end{description}
 
-\begin{figure}[h]
-\centering\includegraphics[scale=1]{os}
-\caption{OS}
-\end{figure}
+\begin{myfigure}{os}{OS}{0.8}
+\end{myfigure}
 %----------------------------------------------------------------------------------------
 %	CHAPTER 2
 %----------------------------------------------------------------------------------------
@@ -176,13 +174,13 @@ For every process, the process manager will provide a process ID, ie; the proces
 
 \begin{myremark}{}
 \begin{itemize}
-	\item \textit{\textbf{./a.out \& :}}\index{ps command} If we want to run a command in background
+	\item ./a.out \& : If we want to run a command in background
 	
-	\item \textit{\textbf{fg :}} command to bring the background process to foreground
+	\item fg : command to bring the background process to foreground
 	
-	\item \textit{\textbf{fg <jobId>: }} To move a specific process to foregraound
+	\item fg <jobId>: To move a specific process to foregraound
 	
-	\item \textit{\textbf{ps -e | grep pts/0: }} If we want to list all programs running in terminal \textit{pts/0}
+	\item ps -e | grep pts/0: If we want to list all programs running in terminal \textit{pts/0}
 
 \end{itemize}
 \end{myremark}
@@ -198,9 +196,9 @@ For every process, the process manager will provide a process ID, ie; the proces
 
 
 \begin{myremark}{}
-\textbf{\textit{kill: }} - command used to send signals to a particular process
+kill: command used to send signals to a particular process
 
-\textbf{ex: kill -9 1769}, where 1769 is process id
+ex: kill -9 1769, where 1769 is process id
 
 \end{myremark}
 
@@ -230,137 +228,141 @@ The parent is nothing but the bash. Whenever a new terminal is opened, a bash pr
 \begin{myoutput}{programs/system.txt}
 \end{myoutput}
 
+system() function executes a command specified by 'command' by calling \textbf{\texttt{/bin/sh -c command}} and returns after the command has been completed.
+
+\subsection*{Example}
+
+Consider the following program
+
+\begin{mycode}{programs/example.c}
+\end{mycode}
+
+Suppose we created a new executable for this code name \textbf{p1.out}
+
+Now we can run the above program in p2.c using system() as shown below:
+
+\begin{mycode}{programs/p2.c}
+\end{mycode}
+
+\begin{myoutput}{programs/example1.txt}
+\end{myoutput}
+
+when \textit{ctr+C} is pressed Hai will since only then control returns from \textit{p1} because of \textit{while(1)}
+
+\subsection*{Example}
+
+Consider the following program, How many processes are created by exampl2.c
+
+\begin{mycode}{programs/example2.c}
+\end{mycode}
+
+\textbf{Answer: 6} 
+
+\begin{enumerate}
+	\item Bash
+	\item a.out
+	\item sh
+	\item cal
+	\item sh
+	\item ls
+\end{enumerate}
+
+\begin{myfigure}{system}{Output}{0.8}
+\end{myfigure}
+
+\section{Context Switch}\index{Context Switch}
+
+Whenever a process is loaded into the RAM the process manager creates one table called \textbf{Process Control Block} which consists of information about the process.
+
+\begin{myfigure}{PCB}{Process Control Block}{1}
+\end{myfigure}
+
+Process manager stores the process information in linked list fashion.
+
+When the process is executing the process information is loaded into CPU. For every process a particular time (time slice) is given. When the time slice expires the process manager loads the updated process information to the respective PCB and the next PCB is loaded into the CPU.
+\linebreak\linebreak
+This loading and unloading of information is called \textbf{\textit{Context Switch}}
+
+When rhe process execution is complete the PCB is destoyed
 %------------------------------------------------
 
-\section{Remarks}\index{Remarks}
+\section{fork() function}\index{fork()}
 
-This is an example of a remark.
+\begin{myremark}{
+pid\_t fork(void)}
+\end{myremark}
 
-\begin{remark}
-The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-\end{remark}
+\begin{itemize}
+	\item Used to create a child process
+	\item Creates a new process by duplicating the calling process
+	\item The new process referred to as child process which is exact duplicate of calling process referred to as parent
+\end{itemize}
 
-%------------------------------------------------
+\subsection*{Example}
 
-\section{Corollaries}\index{Corollaries}
+\begin{mycode}{programs/fork1.c}
+\end{mycode}
 
-This is an example of a corollary.
+\begin{myoutput}{programs/fork1.txt}
+\end{myoutput}
 
-\begin{corollary}[Corollary name]
-The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-\end{corollary}
+\begin{myremark}{
+All the statements after the fork() are executed twice!!
+\linebreak Once by the \textit{parent} and then by the \textit{child}
+\linebreak Parent executes in the foreground, whereas child executes in the background !!}
+\end{myremark}
 
-%------------------------------------------------
+\subsection{Race Condition}
+Normally the parent process gets the CPU time after creating the child
 
-\section{Propositions}\index{Propositions}
 
-This is an example of propositions.
+But when multiple processes are waiting for CPU time a race condition exists and the order of execution of these processes may vary
 
-\subsection{Several equations}\index{Propositions!Several Equations}
+\subsection*{Example}
 
-\begin{proposition}[Proposition name]
-It has the properties:
-\begin{align}
-& \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||\\
-&  ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-\end{align}
-\end{proposition}
+\begin{mycode}{programs/fork2.c}
+\end{mycode}
 
-\subsection{Single Line}\index{Propositions!Single Line}
+\begin{myoutput}{programs/fork2.txt}
+\end{myoutput}
 
-\begin{proposition} 
-Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$. 
-\end{proposition}
+\begin{myfigure}{fork2_demo}{Explanation}{0.1}
+\end{myfigure}
 
-%------------------------------------------------
+Here we can't predict the order of the processes
 
-\section{Examples}\index{Examples}
+\section*{Note}
 
-This is an example of examples.
+Upon successful creation of a child fork returns child process id in a parent and zero in a child. On failure fork() returns -1 and no child is created \& errno is set appropriately.
 
-\subsection{Equation and Text}\index{Examples!Equation and Text}
+\begin{mycode}{programs/fork3.c}
+\end{mycode}
 
-\begin{example}
-Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
-\begin{equation}
-f(x)=\left\{\begin{aligned} & \mathrm{e}^{|x|} & & \text{si $|x-x^0|\leq 1/2$}\\
-& 0 & & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
-\end{equation}
-The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
-\end{example}
+\begin{myoutput}{programs/fork3.txt}
+\end{myoutput}
 
-\subsection{Paragraph of Text}\index{Examples!Paragraph of Text}
+\subsection{Seperating child and parent code using if-else}
 
-\begin{example}[Example name]
-\lipsum[2]
-\end{example}
+\begin{mycode}{programs/fork4.c}
+\end{mycode}
 
-%------------------------------------------------
+\begin{myoutput}{programs/fork4.txt}
+\end{myoutput}
 
-\section{Exercises}\index{Exercises}
+Here child executes the if part and parent exuctes the else part. All code outside if, else is executed by both child and parent
 
-This is an example of an exercise.
+\subsubsection*{Excercise}
 
-\begin{exercise}
-This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
-\end{exercise}
+Write a program to create 3 child process from the same parent
 
-%------------------------------------------------
+\begin{mycode}{programs/fork5.c}
+\end{mycode}
 
-\section{Problems}\index{Problems}
+\begin{myoutput}{programs/fork5.txt}
+\end{myoutput}
 
-\begin{problem}
-What is the average airspeed velocity of an unladen swallow?
-\end{problem}
-
-%------------------------------------------------
-
-\section{Vocabulary}\index{Vocabulary}
-
-Define a word to improve a students' vocabulary.
-
-\begin{vocabulary}[Word]
-Definition of word.
-\end{vocabulary}
-
-%----------------------------------------------------------------------------------------
-%	PART
-%----------------------------------------------------------------------------------------
-
-% \part{Part Two}
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER 3
-%----------------------------------------------------------------------------------------
-
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
-
-\chapter{Presenting Information}
-
-\section{Table}\index{Table}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-
-%------------------------------------------------
-
-\section{Figure}\index{Figure}
-
-\begin{figure}[h]
-\centering\includegraphics[scale=0.5]{placeholder}
-\caption{Figure caption}
-\end{figure}
+\begin{myfigure}{fork3}{Structure}{0.5}
+\end{myfigure}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY

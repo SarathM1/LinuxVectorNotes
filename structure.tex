@@ -506,8 +506,7 @@ addtohook={%
       \centering\tikz[scale=1]\node[scale=1]{};
       \end{minipage}%
       \begin{minipage}{0.75\textwidth}
-      \textbf{Commands}
-      \textbf{#1}\par\smallskip
+      \textbf{\texttt{#1}}\par\smallskip
       \BODY
       \end{minipage}\hfill}%
     };
@@ -559,3 +558,12 @@ showstringspaces=false}
 	\lstinputlisting[numbers=none, nolol, caption=Ouput, escapechar=, showstringspaces=false]{#1}
   }
   
+\NewEnviron{myfigure}[3]
+{
+	\begin{figure}[h!]
+		\centering\includegraphics[scale=#3]{#1}
+		\caption{#2}
+	\end{figure}
+}
+
+\parskip = \baselineskip % no shrink and no stretch
